@@ -4,7 +4,7 @@ node.js IPC(Inter Process Communication) package using RPC over HTTP.
 ## Installation
 Install using npm: (coming soon)
 ```sh
-npm install ------
+npm install teade
 ```
 
 ## Usage

@@ -10,11 +10,11 @@ npm install teade
 ## Usage
 Require library
 ```javascript
-var communicator = require('communicator');
+var teade = require('teade');
 ```
 ### Server
 ```javascript
-var server = new communicator.Server();
+var server = new teade.Server();
 
 server.addService({
 	'hello': func1,
@@ -26,7 +26,7 @@ server.start();
 ```
 ### Client
 ```javascript
-var client = new communicator.Client('http://localhost', 8080);
+var client = new teade.Client('http://localhost', 8080);
 
 var payload = {
   name: "John"

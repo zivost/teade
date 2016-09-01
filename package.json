@@ -1,11 +1,20 @@
 {
   "name": "teade",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "homepage": "https://github.com/nigharsh/teade",
   "repository": {
       "type": "git",
       "url": "git@github.com:nigharsh/teade.git"
   },
+  "keywords": [
+    "node",
+    "npm",
+    "rest",
+    "ipc",
+    "microservices",
+    "http",
+    "javascript"
+  ],
   "description": "inter service communication using http",
   "main": "index.js",
   "scripts": {

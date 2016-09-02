@@ -1,8 +1,8 @@
 # Teade
-node.js IPC(Inter Process Communication) package using RPC over HTTP. 
+node.js IPC(Inter Process Communication) package using RPC over HTTP.
 
 ## Installation
-Install using npm: (coming soon)
+Install using npm:
 ```sh
 npm install teade
 ```
@@ -20,6 +20,10 @@ server.addService({
 	'hello': func1,
 	'hey': func2
 });
+
+function func1(call, callback) {
+	callback(null, 'Hi '+call.name+'!');
+};
 
 server.bind(8080);
 server.start();
@@ -40,5 +44,3 @@ client.request('hello', payload, function(err, response) {
 	}
 })
 ```
-## Examples
-(Coming Soon)

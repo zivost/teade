@@ -1,6 +1,14 @@
+"use strict"
+
 var request = require('request');
 
 function Client(host, port) {
+	if (!host || !isNaN(host)) {
+		throw new Error('No Host Defined in Client Initialisation');
+	}
+	if (!port || isNaN(port)) {
+		throw new Error('No Port Defined in Client Initialisation');
+	}
 	this.host = host;
 	this.port = port;
 }
@@ -20,7 +28,7 @@ Client.prototype.request = function(method, payload, callback) {
 		} else if (body) {
 			callback(new Error(body));
 		} else {
-			callback(new Error('Unknown error'));
+			callback(new Error('Unknown error, the statusCode recieved was not 200'));
 		}
 	});
 }

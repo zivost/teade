@@ -17,8 +17,8 @@ var teade = require('teade');
 var server = new teade.Server();
 
 server.addService({
-	'read': read,
-	'write': write
+	'readRPC': read,
+	'writeRPC': write
 });
 
 function read(call, callback) {
@@ -46,15 +46,22 @@ server.start();
 ```javascript
 var client = new teade.Client('http://localhost', 8080);
 
+// payload should always be a valid JSON
 var payload = {
   name: "John"
 }
 
-client.request('hello', payload, function(err, response) {
+client.request('readRPC', payload, function(err, response) {
 	if (err) {
-		//handle error
+		// handle error
+		// accessible data
+			// error.code
+			// error.body
 	} else {
 		//do something with the response
+		// accessible data
+			// response.statusCode
+			// response.body
 	}
 })
 ```

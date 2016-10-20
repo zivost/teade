@@ -32,5 +32,31 @@ Client.prototype.request = function(method, payload, callback) {
 		}
 	});
 }
-
+Client.prototype.request = function(method, payload, callback) {
+	let host = this.host;
+	let port = this.port;
+	request({
+	    url: host+':'+port+'/'+method,
+	    method: "POST",
+	    json: payload
+	}, function (error, response, body) {
+		if(error){
+			return callback(error);
+		}else if (response.statusCode != 200){
+			var response = body || response;
+			if(body){
+				return callback(body);
+			}else{
+				return callback(response);
+			}
+		}
+		else{
+			if(body){
+				callback(null, body);
+			}else{
+				callback(null, response);
+			}
+		}
+	});
+}
 exports.Client = Client;

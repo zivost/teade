@@ -21,42 +21,16 @@ Client.prototype.request = function(method, payload, callback) {
 	    method: "POST",
 	    json: payload
 	}, function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			callback(null, body);
-		} else if (error) {
-			callback(error);
-		} else if (body) {
-			callback(new Error(body));
-		} else {
-			callback(new Error('Unknown error, the statusCode recieved was not 200'));
-		}
-	});
-}
-Client.prototype.request = function(method, payload, callback) {
-	let host = this.host;
-	let port = this.port;
-	request({
-	    url: host+':'+port+'/'+method,
-	    method: "POST",
-	    json: payload
-	}, function (error, response, body) {
 		if(error){
+			// there is an error in sending RPC
 			return callback(error);
-		}else if (response.statusCode != 200){
-			var response = body || response;
-			if(body){
-				return callback(body);
-			}else{
-				return callback(response);
-			}
+		}else if(response.statusCode != 200){
+			// there is an error sent from RPC function
+			return callback(response);
 		}
-		else{
-			if(body){
-				callback(null, body);
-			}else{
-				callback(null, response);
-			}
-		}
+		// no error
+		return callback(null, response);	
 	});
 }
+
 exports.Client = Client;

@@ -25,28 +25,37 @@ function Server(options) {
 	}
 }
 
-
 Server.prototype.addService = function(implementation) {
 	var app = this._server;
 	_.each(implementation, function(method, key) {
 		app.post('/'+key, function (req, res) {
 			method(req.body, function(err, response) {
 				if (err) {
-					var statusCode=err.code || err.statusCode;
-					var message=err.message || err.msg;
+					// get status code from either code (preferred error variable name) or status
+					var statusCode = err.code || err.status;
+					// get message for the error
+					var message = err.message;
 					if(!statusCode){
-						console.log('WARNING: No "statusCode/code" recieved');
+						// if no error code found then give set it as 500
+						console.log('WARNING: No "status/code" recieved');
 						statusCode=500;
 					}
 					if(!message){
-						console.log('WARNING: No "message/msg" recieved');
+						// if no message found then give set it as 'Internal Server Error'
+						console.log('WARNING: No "message" recieved');
 						message='Internal Server Error';
 					}
 					if(!statusCode || !message){
-						console.log('Err from Server:',err);
+						// if none are present print whole error
+						console.log('Error from Server:',err);
 					}
-					return res.status(statusCode).send(message);
+					var error = new Error(message);
+					error.body = err.body;
+					error.code = statusCode
+					return res.status(statusCode).send(error);
 				}
+				// there is no error
+				// statusCode is automatically sent as 200
 				return res.send(response);
 			});
 		});

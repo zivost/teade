@@ -21,15 +21,15 @@ Client.prototype.request = function(method, payload, callback) {
 	    method: "POST",
 	    json: payload
 	}, function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			callback(null, body);
-		} else if (error) {
-			callback(error);
-		} else if (body) {
-			callback(new Error(body));
-		} else {
-			callback(new Error('Unknown error, the statusCode recieved was not 200'));
+		if(error){
+			// there is an error in sending RPC
+			return callback(error);
+		}else if(response.statusCode != 200){
+			// there is an error sent from RPC function
+			return callback(response);
 		}
+		// no error
+		return callback(null, response);	
 	});
 }
 

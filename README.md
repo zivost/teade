@@ -4,7 +4,7 @@ node.js IPC(Inter Process Communication) package using RPC over HTTP.
 ## Installation
 Install using npm:
 ```sh
-npm install teade
+npm install --save teade
 ```
 
 ## Usage
@@ -17,12 +17,26 @@ var teade = require('teade');
 var server = new teade.Server();
 
 server.addService({
-	'hello': func1,
-	'hey': func2
+	'readRPC': read,
+	'writeRPC': write
 });
 
-function func1(call, callback) {
+function read(call, callback) {
 	callback(null, 'Hi '+call.name+'!');
+};
+
+function read(call, callback) {
+	myReadProceduralCall(call, function(err, response) {
+		if (err){
+			var error = new Error();
+			error.message = err.message;
+			error.code = err.status; //you can also use `error.status = err.status` here
+			error.body = err;
+			callback(error);
+		}else{
+			callback(null, response);
+		}
+	});
 };
 
 server.bind(8080);
@@ -32,15 +46,22 @@ server.start();
 ```javascript
 var client = new teade.Client('http://localhost', 8080);
 
+// payload should always be a valid JSON
 var payload = {
   name: "John"
 }
 
-client.request('hello', payload, function(err, response) {
+client.request('readRPC', payload, function(err, response) {
 	if (err) {
-		//handle error
+		// handle error
+		// accessible data
+			// error.code
+			// error.body
 	} else {
 		//do something with the response
+		// accessible data
+			// response.statusCode
+			// response.body
 	}
 })
 ```

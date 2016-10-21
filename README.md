@@ -22,10 +22,6 @@ server.addService({
 });
 
 function read(call, callback) {
-	callback(null, 'Hi '+call.name+'!');
-};
-
-function read(call, callback) {
 	myReadProceduralCall(call, function(err, response) {
 		if (err){
 			var error = new Error();

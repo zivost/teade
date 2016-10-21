@@ -25,9 +25,7 @@ function read(call, callback) {
 	myReadProceduralCall(call, function(err, response) {
 		if (err){
 			var error = new Error();
-			error.message = err.message;
-			error.code = err.status; //you can also use `error.status = err.status` here
-			error.body = err;
+			// anything attached to error is sent as is
 			callback(error);
 		}else{
 			callback(null, response);
@@ -51,13 +49,11 @@ client.request('readRPC', payload, function(err, response) {
 	if (err) {
 		// handle error
 		// accessible data
-			// error.code
-			// error.body
+			// err
 	} else {
 		//do something with the response
 		// accessible data
-			// response.statusCode
-			// response.body
+			// response
 	}
 })
 ```

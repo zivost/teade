@@ -21,16 +21,20 @@ Client.prototype.request = function(method, payload, callback) {
 	    method: "POST",
 	    json: payload
 	}, function (error, response, body) {
+		if(!body){
+			body = new Error('unknown error occured');
+		}
 		if(error){
 			// there is an error in sending RPC
 			return callback(error);
 		}else if(response.statusCode != 200){
 			// there is an error sent from RPC function
-			return callback(response);
+			return callback(body);
 		}
 		// no error
-		return callback(null, response);	
+		return callback(null, body);
 	});
 }
+
 
 exports.Client = Client;

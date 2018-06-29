@@ -1,16 +1,21 @@
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
+// start the server
 require('./server');
-var client = require('./client');
 
+// get the client
+const client = require('./client');
+
+// call the client
 function testServerClientRPC(payload, cb){
     client.testClient(payload, function(err, response){
         cb(err, response);
     });
 }
 
+// test the right and wrong response
 describe('testServerClientRPC()', function () {
-    it('should return pong in response to ping', function (done) {
+    it('should return pong in response to ping else should return not ping', function (done) {
         var correctPayload = {
             data: "ping"
         };

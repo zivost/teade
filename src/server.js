@@ -1,11 +1,9 @@
-var _ = require('lodash');
-
-var express = require('express');
-
-var bodyParser = require('body-parser');
+const each = require('lodash/each');
+const express = require('express');
+const bodyParser = require('body-parser');
 
 function Server(options) {
-    var server = express();
+    const server = express();
 
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({extended: false}));
@@ -26,8 +24,8 @@ function Server(options) {
 }
 
 Server.prototype.addService = function (implementation) {
-    var app = this._server;
-    _.each(implementation, function (method, key) {
+    const app = this._server;
+    each(implementation, function (method, key) {
         app.post('/' + key, function (req, res) {
             method(req.body, function (err, response) {
                 if (err) {
@@ -37,7 +35,7 @@ Server.prototype.addService = function (implementation) {
             });
         });
     });
-}
+};
 
 
 Server.prototype.bind = function (port) {

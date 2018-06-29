@@ -26,14 +26,14 @@
     "url": "https://github.com/nigharsh"
   },
   "license": "MIT",
-  "engines" : {
-    "node" : ">=4"
+  "engines": {
+    "node": ">=4"
   },
-  "engineStrict" : true,
+  "engineStrict": true,
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "lodash": "^4.15.0",
+    "lodash": "^4.17.10",
     "request": "^2.74.0"
   },
   "devDependencies": {

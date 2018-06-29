@@ -1,7 +1,7 @@
-var teade = require('../../index');
-var functions = require('./function');
+const teade = require('../../index');
+const functions = require('./function');
 
-var server = new teade.Server();
+const server = new teade.Server();
 
 server.addService({
     'pingRPC': ping

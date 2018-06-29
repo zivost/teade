@@ -1,6 +1,6 @@
-"use strict"
+"use strict";
 
-var request = require('request');
+const request = require('request');
 
 function Client(host, port) {
     if (!host || !isNaN(host)) {
@@ -27,14 +27,14 @@ Client.prototype.request = function (method, payload, callback) {
         if (error) {
             // there is an error in sending RPC
             return callback(error);
-        } else if (response.statusCode != 200) {
+        } else if (response.statusCode !== 200) {
             // there is an error sent from RPC function
             return callback(body);
         }
         // no error
         return callback(null, body);
     });
-}
+};
 
 
 exports.Client = Client;

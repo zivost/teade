@@ -1,5 +1,5 @@
 function getPong(payload, callback){
-    var ifPing = payload.data;
+    let ifPing = payload.data;
     if(ifPing === "ping"){
         return callback(null, "pong");
     }else{

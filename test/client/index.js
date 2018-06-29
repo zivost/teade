@@ -1,5 +1,5 @@
-var teade = require('../../index');
-var client = new teade.Client('http://localhost', 8080);
+const teade = require('../../index');
+const client = new teade.Client('http://localhost', 8080);
 
 // payload should always be a valid JSON
 

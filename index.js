@@ -1,6 +1,6 @@
-var client = require('./src/client.js');
+const client = require('./src/client.js');
 
-var server = require('./src/server.js');
+const server = require('./src/server.js');
 
 /**
  * @see module:src/server.Server

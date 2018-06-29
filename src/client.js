@@ -72,7 +72,7 @@ function getHostPort(host, port){
         console.error("8080");
         hostPort.port = 8080;
     }
-    
+
     return hostPort;
 }
 

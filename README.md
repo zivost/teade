@@ -57,3 +57,11 @@ client.request('readRPC', payload, function(err, response) {
 	}
 })
 ```
+
+#### Client Parameters
+
+| Name  | Description | Example |
+| ------------- | ------------- | ------------- |
+| Host  | hostname where the RPC server is running, prefix the protocol  | http://localhost |
+| Port  | port at which the RPC server is running | 8080 |
+| Host-Port Set  | an array of host:port strings, Teade will then chose a random entry.  | ```["http://localhost:8080","http://localhost:8081"]``` |

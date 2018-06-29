@@ -1,6 +1,6 @@
 {
   "name": "teade",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "homepage": "https://github.com/nigharsh/teade",
   "repository": {
     "type": "git",
@@ -26,6 +26,10 @@
     "url": "https://github.com/nigharsh"
   },
   "license": "MIT",
+  "engines" : {
+    "node" : ">=4"
+  },
+  "engineStrict" : true,
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",

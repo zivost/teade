@@ -3,8 +3,8 @@
   "version": "0.0.5",
   "homepage": "https://github.com/nigharsh/teade",
   "repository": {
-      "type": "git",
-      "url": "git@github.com:nigharsh/teade.git"
+    "type": "git",
+    "url": "git@github.com:nigharsh/teade.git"
   },
   "keywords": [
     "node",
@@ -18,12 +18,12 @@
   "description": "inter service communication using http",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": {
-      "name": "Harsh Nigam",
-      "email": "nigharsh@gmail.com",
-      "url": "https://github.com/nigharsh"
+    "name": "Harsh Nigam",
+    "email": "nigharsh@gmail.com",
+    "url": "https://github.com/nigharsh"
   },
   "license": "MIT",
   "dependencies": {
@@ -31,5 +31,9 @@
     "express": "^4.14.0",
     "lodash": "^4.15.0",
     "request": "^2.74.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
   }
 }

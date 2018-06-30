@@ -45,8 +45,7 @@ const teade = require('teade');
 let server = new teade.Server();
 
 server.addService({
-	'readRPC': read,
-	'writeRPC': write
+	'readRPC': read
 });
 
 function read(call, callback) {

@@ -1,10 +1,10 @@
 {
   "name": "teade",
   "version": "1.0.1",
-  "homepage": "https://github.com/nigharsh/teade",
+  "homepage": "https://github.com/zivost/teade",
   "repository": {
     "type": "git",
-    "url": "git@github.com:nigharsh/teade.git"
+    "url": "git@github.com:zivost/teade.git"
   },
   "keywords": [
     "node",
@@ -21,9 +21,9 @@
     "test": "mocha"
   },
   "author": {
-    "name": "Harsh Nigam",
-    "email": "nigharsh@gmail.com",
-    "url": "https://github.com/nigharsh"
+    "name": "Rohit Hazra",
+    "email": "rohithzr@live.com",
+    "url": "https://github.com/rohithzr"
   },
   "license": "MIT",
   "engines": {
@@ -31,13 +31,13 @@
   },
   "engineStrict": true,
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "lodash": "^4.17.10",
-    "request": "^2.74.0"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "request": "^2.88.2"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.3.4",
     "mocha": "^5.2.0"
   }
 }
